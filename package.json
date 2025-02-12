@@ -2,7 +2,7 @@
   "name": "vscode-util-commands",
   "displayName": "VS Code Util Commands",
   "description": "Utility Commands for VS Code",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "bzy-debug",
   "repository": {
     "type": "git",
