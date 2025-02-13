@@ -1,21 +1,8 @@
 import * as vscode from "vscode";
 import * as util from "./util";
+import * as types from "./types";
 
-type Command = {
-  kind: "command";
-  identifier: string;
-  handler: Parameters<typeof vscode.commands.registerCommand>[1];
-};
-
-type TextEditorCommand = {
-  kind: "text-editor-command";
-  identifier: string;
-  handler: Parameters<typeof vscode.commands.registerTextEditorCommand>[1];
-};
-
-type TCommand = Command | TextEditorCommand;
-
-export function register(command: TCommand): vscode.Disposable {
+export function register(command: types.TCommand): vscode.Disposable {
   switch (command.kind) {
     case "command":
       return vscode.commands.registerCommand(
@@ -30,7 +17,7 @@ export function register(command: TCommand): vscode.Disposable {
   }
 }
 
-const revealTypeDefinitionAside: TextEditorCommand = {
+const revealTypeDefinitionAside: types.TextEditorCommand = {
   kind: "text-editor-command",
   identifier: "editor.action.revealTypeDefinitionAside",
   async handler(editor) {
@@ -56,4 +43,4 @@ const revealTypeDefinitionAside: TextEditorCommand = {
   },
 };
 
-export const commands: TCommand[] = [revealTypeDefinitionAside];
+export const commands: types.TCommand[] = [revealTypeDefinitionAside];
