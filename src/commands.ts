@@ -4,17 +4,13 @@ import * as util from "./util";
 type Command = {
   kind: "command";
   identifier: string;
-  handler(...args: any[]): void;
+  handler: Parameters<typeof vscode.commands.registerCommand>[1];
 };
 
 type TextEditorCommand = {
   kind: "text-editor-command";
   identifier: string;
-  handler(
-    editor: vscode.TextEditor,
-    edit: vscode.TextEditorEdit,
-    ...args: any[]
-  ): void;
+  handler: Parameters<typeof vscode.commands.registerTextEditorCommand>[1];
 };
 
 type TCommand = Command | TextEditorCommand;
