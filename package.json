@@ -23,6 +23,11 @@
       {
         "command": "editor.action.revealTypeDefinitionAside",
         "title": "Reveal Type Definition Aside"
+      },
+      {
+        "command": "vscode-util-commands.runCommand",
+        "title": "VS Code Util Commands: Run Command",
+        "shortTitle": "Run Command"
       }
     ]
   },

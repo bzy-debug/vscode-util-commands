@@ -43,4 +43,32 @@ const revealTypeDefinitionAside: types.TextEditorCommand = {
   },
 };
 
-export const commands: types.TCommand[] = [revealTypeDefinitionAside];
+const runCommand: types.Command = {
+  kind: "command",
+  identifier: "vscode-util-commands.runCommand",
+  async handler() {
+    const commandId = await vscode.window.showQuickPick(
+      vscode.commands.getCommands(true),
+      { placeHolder: "Select a command to run" },
+    );
+    if (commandId === undefined) {
+      return;
+    }
+    try {
+      await vscode.commands.executeCommand(commandId);
+    } catch (error) {
+      if (error instanceof Error) {
+        vscode.window.showErrorMessage(
+          `Failed to execute command: ${error.message}`,
+        );
+      } else {
+        vscode.window.showErrorMessage("Failed to execute command");
+      }
+    }
+  },
+};
+
+export const commands: types.TCommand[] = [
+  revealTypeDefinitionAside,
+  runCommand,
+];
