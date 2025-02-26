@@ -7,6 +7,7 @@ Extension for Visual Studio Code that provides a set of useful commands.
 | identifier                                | description                                                        |
 | ----------------------------------------- | ------------------------------------------------------------------ |
 | `editor.action.revealTypeDefinitionAside` | like `editor.action.revealDefinitionAside` but for type definition |
+| `vscode-util-commands.runCommand`         | run a command by its identifier, won't pass any arguments          |
 
 ## How to use the commands
 
